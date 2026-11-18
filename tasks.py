@@ -1,5 +1,7 @@
 def add_task(tasks, title):
-    """Add a new task and return it."""
+    """Add a new task. Empty titles are rejected."""
+    if not title.strip():
+        raise ValueError("Task title cannot be empty")
     new_id = max([t["id"] for t in tasks], default=0) + 1
     task = {"id": new_id, "title": title, "done": False}
     tasks.append(task)
