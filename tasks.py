@@ -7,11 +7,17 @@ def add_task(tasks, title):
 
 
 def complete_task(tasks, task_id):
-    """Mark one task as completed."""
+    """Mark the selected task as completed. Raise ValueError if not found."""
     for task in tasks:
         if task["id"] == task_id:
+            if task["done"]:
+                raise ValueError("Task " + str(task_id) + " is already completed")
             task["done"] = True
-    return tasks
+            return task
+                
+            return task
+        
+    raise ValueError("No task with id " + str(task_id))
 
 
 def delete_task(tasks, task_id):
