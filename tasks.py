@@ -10,8 +10,13 @@ def complete_task(tasks, task_id):
     """Mark the selected task as completed. Raise ValueError if not found."""
     for task in tasks:
         if task["id"] == task_id:
+            if task["done"]:
+                raise ValueError("Task " + str(task_id) + " is already completed")
             task["done"] = True
             return task
+                
+            return task
+        
     raise ValueError("No task with id " + str(task_id))
 
 
