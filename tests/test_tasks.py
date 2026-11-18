@@ -25,7 +25,7 @@ class TestTaskManager(unittest.TestCase):
         tasks = []
         add_task(tasks, "Old task")
         delete_task(tasks, 1)
-        self.assertEqual(len(tasks), 1)
+        self.assertEqual(len(tasks), 0)
 
     def test_delete_invalid_id(self):
         with self.assertRaises(ValueError):
