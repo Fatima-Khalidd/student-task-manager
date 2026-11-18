@@ -15,9 +15,11 @@ def complete_task(tasks, task_id):
 
 
 def delete_task(tasks, task_id):
-    """Delete a task by its id."""
+    """Delete a task by its id. Raise ValueError if the id is not valid."""
+        if not isinstance(task_id, int):
+            raise ValueError("Task id must be a number")
     for task in tasks:
         if task["id"] == task_id:
             tasks.remove(task)
-            break
-    return tasks
+            return task
+    raise ValueError("No task with id " + str(task_id))
